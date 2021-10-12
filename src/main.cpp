@@ -21,10 +21,6 @@
 * along with DSO. If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-
-
-
 #include <locale.h>
 #include <signal.h>
 #include <stdlib.h>
@@ -35,14 +31,13 @@
 #include "FullSystem/FullSystem.h"
 #include "util/Undistort.h"
 #include "IOWrapper/Pangolin/PangolinDSOViewer.h"
-#include "IOWrapper/OutputWrapper/SampleOutputWrapper.h"
-
 
 #include <ros/ros.h>
 #include <sensor_msgs/image_encodings.h>
 #include <sensor_msgs/Image.h>
 #include <sensor_msgs/CameraInfo.h>
 #include <geometry_msgs/PoseStamped.h>
+#include <dso_ros/ROSOutputWrapper.h>
 #include "cv_bridge/cv_bridge.h"
 
 using namespace dso;
@@ -77,12 +72,7 @@ void vidCb(const sensor_msgs::ImageConstPtr img)
 	fullSystem->addActiveFrame(undistImg, frameID);
 	frameID++;
 	delete undistImg;
-
 }
-
-
-
-
 
 int main(int argc, char** argv)
 {
@@ -126,9 +116,7 @@ int main(int argc, char** argv)
 	  		 (int)undistorter->getSize()[0],
 	  		 (int)undistorter->getSize()[1]));
 
-
-  //fullSystem->outputWrapper.push_back(new IOWrap::SampleOutputWrapper());
-
+  fullSystem->outputWrapper.push_back(new IOWrap::ROSOutputWrapper(nh));
 
   if(undistorter->photometricUndist != 0)
   	fullSystem->setGammaFunction(undistorter->photometricUndist->getG());

@@ -43,6 +43,7 @@ set(CMAKE_CXX_FLAGS
 )
 
 include_directories(
+  include
   ${PROJECT_SOURCE_DIR}/src
   ${DSO_PATH}/src
   ${DSO_PATH}/thirdparty/Sophus

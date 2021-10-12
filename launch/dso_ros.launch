@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <node name="dso_live" type="dso_live" pkg="dso_ros" output="screen">
+    <param name="calib" value="/media/ian/ResearchSSD/aerial_pennov/calib/camera.txt"/>
+    <param name="display" value="False"/>
+  </node>
+</launch>

@@ -8,7 +8,9 @@ find_package(catkin REQUIRED COMPONENTS
   cv_bridge
 )
 
-set(DSO_PATH $ENV{DSO_PATH})
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+set(DSO_PATH /home/ian/Repos/dso)
 message("\n\n---- LOOKING FOR DSO at\n\"${DSO_PATH}\"")
 
 

@@ -49,6 +49,7 @@ public:
   {
     geometry_msgs::PoseStamped pose_msg;
     pose_msg.header.stamp.fromSec(frame->timestamp);
+    pose_msg.header.frame_id = "world";
     pose_msg.pose.orientation.w = frame->camToWorld.so3().unit_quaternion().w();
     pose_msg.pose.orientation.x = frame->camToWorld.so3().unit_quaternion().x();
     pose_msg.pose.orientation.y = frame->camToWorld.so3().unit_quaternion().y();
